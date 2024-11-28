@@ -1,0 +1,113 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(70deg, rgb(20, 64, 108), rgb(2, 12, 21));
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+header {
+    background-color: rgba(29, 79, 123, 0.336);
+    color: #00b7ff;
+    padding: 15px;
+    box-shadow: 0 1px 10px #00b7ff;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .logo {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #000000;
+    border: 1px solid #00b7ff;
+    box-shadow: 0 0 5px #00b7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .user {
+    font-size: 1.5rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    gap: 40px;
+}
+
+#game-status {
+    color: #00b7ff;
+    font-size: 1.6rem;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    justify-content: center;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #00b7ff;
+    box-shadow: 0 0 10px #00b7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cross {
+    position: relative;
+    height: 50px;
+    width: 10px;
+}
+
+.cross > div {
+    width: 6px;
+    height: 60px;
+    background-color: #00b7ff;
+    position: absolute;
+    box-shadow: 0 0 10px #00b7ff;
+}
+
+.cross > div:first-child {
+    transform: rotate(45deg);
+}
+
+.cross > div:last-child {
+    transform: rotate(-45deg);
+}
+
+.circle {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 6px solid #00b7ff;
+    box-shadow: 0 0 10px #00b7ff, inset 0 0 10px #00b7ff;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #00b7ff;
+}
