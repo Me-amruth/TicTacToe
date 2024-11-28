@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(express.static('public'));
+app.use(express.static('public')); // Serve static files from the "public" folder
 
 let players = {}; // Keep track of players
 let board = Array(9).fill(null); // Empty board
@@ -20,7 +20,9 @@ io.on('connection', (socket) => {
         players[socket.id] = Object.keys(players).length === 0 ? 'X' : 'O';
         socket.emit('playerInfo', players[socket.id]);
     } else {
-        socket.emit('playerInfo', null);
+        // Notify the player that the game is full
+        socket.emit('gameFull', 'The game is already full. Please try again later.');
+        socket.disconnect(); // Disconnect the player since the game is full
     }
 
     // Handle move
@@ -39,6 +41,7 @@ io.on('connection', (socket) => {
         if (Object.keys(players).length === 0) {
             board = Array(9).fill(null); // Reset board
             currentPlayer = 'X'; // Reset to X
+            io.emit('gameReset', 'The game has been reset. No players are connected.');
         }
     });
 });
