@@ -4,7 +4,10 @@ const { Server } = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+    path: '/socket.io', // Default path
+});
+
 
 app.use(express.static('public'));
 
